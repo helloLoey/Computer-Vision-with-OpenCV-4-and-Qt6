@@ -17,17 +17,17 @@ public:
     Template_Plugin();
     ~Template_Plugin();
 
-    QString title();
-    QString version();
-    QString description();
+    QString title() override;
+    QString version() override;
+    QString description() override;
     QString help();
-    void setupUi(QWidget *parent);
-    void processImage(const cv::Mat &inputImage, cv::Mat &outputImage);
+    void setupUi(QWidget *t_parent);
+    void processImage(const cv::Mat &t_source, cv::Mat &t_destination);
 
 signals:
     void updateNeeded();
-    void errorMessage(QString msg);
-    void infoMessage(QString msg);
+    void errorMessage(const QString &t_message);
+    void infoMessage(const QString &t_message);
 
 private:
     Ui::PluginGui *ui;
